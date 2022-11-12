@@ -1,0 +1,77 @@
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>List of Books</title>
+      <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h2 style="text-align: center; text-transform: uppercase; color: blue;">List of Books</h2>
+
+        <input type="text" name="" id="myInput" placeholder="Search for Name or Author" onkeyup="funSearch()">
+
+        <table id="myTable">
+            <tr class="header">
+                <th style="width: 30%;">Title</th>
+                <th style="width: 20%;">Author</th>
+                <th style="width: 20%;">Subject</th>
+                <th style="width: 10%;">Publish Date</th>
+            </tr>
+            <tr>
+                <td>Operating System Concepts</td>
+                <td>Abraham Silberschatz and Peter Galvin</td>
+                <td>Operating System</td>
+                <td>2002</td>
+            </tr>
+            <tr>
+                <td>Operating System: A Design-Oriented Approach</td>
+                <td>Charles Crowley</td>
+                <td>Operating System</td>
+                <td>1996</td>
+            </tr>
+            <tr>
+                <td>Design of the UNIX Operating Systems</td>
+                <td>Maurice Bach</td>
+                <td>Operating System</td>
+                <td>1986</td>
+            </tr>
+            <tr>
+                <td>Operating Systems</td>
+                <td>Archer J Harris</td>
+                <td>Operating System</td>
+                <td>2008</td>
+            </tr>
+            <tr>
+                <td>Operating Systems: A Concept-Based Approach</td>
+                <td>D M Dhamdhere</td>
+                <td>Operating System</td>
+                <td>2003</td>
+            </tr>
+        </table>
+        <script>
+          function funSearch(){
+            let filter = document.getElementById("myInput").value;
+            let filter1 = filter.toString().toUpperCase();
+            let myTable = document.getElementById("myTable");
+            let tr = myTable.getElementsByTagName('tr');
+
+            for(var i=0; i<tr.length; i++){
+              let td = tr[i].getElementsByTagName('td')[0];
+              let td1 = tr[i].getElementsByTagName('td')[1];
+
+              if(td || td1){
+                let textvalue = td.textContent || td.innerHTML;
+                let textvalue1 = td1.textContent || td1.innerHTML;
+
+                if((textvalue.toUpperCase().indexOf(filter1) > -1) || (textvalue1.toUpperCase().indexOf(filter1) > -1)){
+                  tr[i].style.display = "";
+                }else{
+                  tr[i].style.display = "none";
+                }
+              }
+            }
+          }
+        </script>
+    </body>
+</html>
